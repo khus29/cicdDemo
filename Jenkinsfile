@@ -13,12 +13,12 @@ pipeline {
     }
     stage('Run unit test coverage') {
       steps {
-        sh 'npm run test:coverage'
+        sh '/usr/local/bin run test:coverage'
       }
     }
     stage('Run unit sonar') {
       steps {
-        sh 'npm run sonar'
+        sh '/usr/local/bin run sonar'
       }
     }
   }
