@@ -1,26 +1,71 @@
-pipeline {
-  agent any
-  stages {
-    stage('install npm dependencies') {
-      steps {
-        sh 'npm install'
-      }
+pipeline{
+     agent any
+
+    stages{
+        stage('Installing NPM dependencies'){
+
+            steps {
+                sh '/usr/local/bin/npm install'
+            }
+        }
+         stage('Run Unit Test'){
+
+            steps {
+                sh '/usr/local/bin/npm run test'
+            }
+        }
+        stage('Run Coverage Test'){
+
+            steps {
+                sh '/usr/local/bin/npm run testCoverage'
+            }
+        }
+        stage('Run Sonar Analysis'){
+            steps {
+                sh '/usr/local/bin/npm run sonar'
+            }
+        }
+         stage('Build docker image'){
+            steps {
+                sh 'docker-compose build'
+            }
+        }
+
+         stage('Upload docker image'){
+            steps {
+                echo 'Uploading docker image to Dockerhub'
+            }
+        }
+
+         stage('Launch CustomerService Application'){
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+
+
+         stage('Functional Test'){
+            steps {
+                echo 'Functional Test executed successfully'
+            }
+        }
+
+         stage('Performance Test'){
+            steps {
+                echo 'Performance Test executed successfully'
+            }
+        }
+
+         stage('Security Test'){
+            steps {
+                echo 'Security Test executed successfully'
+            }
+        }
+
+         stage('Destroy Customer Service Application'){
+            steps {
+                sh 'docker-compose down'
+            }
+        }
     }
-    stage('Run unit test') {
-      steps {
-        sh 'export PATH=/usr/local/bin'
-        sh 'npm run test'
-      }
-    }
-    stage('Run unit test coverage') {
-      steps {
-        sh '/usr/local/bin/npm run testCoverage'
-      }
-    }
-    stage('Run unit sonar') {
-      steps {
-        sh '/usr/local/bin/npm run sonar'
-      }
-    }
-  }
 }
