@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('install npm dependencies') {
       steps {
-        sh '/usr/local/bin/npm install'
+        sh 'npm install'
       }
     }
     stage('Run unit test') {
