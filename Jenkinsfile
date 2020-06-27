@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('install npm dependencies') {
       steps {
-        sh 'export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
-        sh 'npm install'
+        sh 'export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin npm install'
       }
     }
     stage('Run unit test') {
