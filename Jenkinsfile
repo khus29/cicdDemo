@@ -5,7 +5,7 @@ pipeline{
         stage('Installing NPM dependencies'){
 
             steps {
-                sh '/usr/local/bin/npm install'
+                sh 'npm install'
             }
         }
          stage('Run Unit Test'){
