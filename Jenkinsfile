@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('install npm dependencies') {
       steps {
-        sh 'export PATH=/usr/local/bin'
+        sh 'export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
         sh 'npm install'
       }
     }
