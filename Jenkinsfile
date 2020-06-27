@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run unit test') {
       steps {
-        sh '/usr/local/bin/npm run test'
+        sh 'export PATH=/usr/local/bin npm run test'
       }
     }
   }
