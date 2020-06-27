@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Run unit test coverage') {
       steps {
-        sh 'export PATH=/usr/local/bin run test:coverage'
+        sh 'export PATH=/usr/local/bin run testCoverage'
       }
     }
     stage('Run unit sonar') {
